@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hotel Booking Prediction</title>
+</head>
+<body>
+	<h1>Hotel Booking Prediction</h1>
+	<form id="booking-form">
+		<label for="no_of_adults">Number of Adults:</label>
+		<input type="number" id="no_of_adults" name="no_of_adults" required><br>
+
+		<label for="no_of_children">Number of Children:</label>
+		<input type="number" id="no_of_children" name="no_of_children" required><br>
+
+		<label for="no_of_weekend_nights">Number of Weekend Nights:</label>
+		<input type="number" id="no_of_weekend_nights" name="no_of_weekend_nights" required><br>
+
+		<label for="no_of_week_nights">Number of Week Nights:</label>
+		<input type="number" id="no_of_week_nights" name="no_of_week_nights" required><br>
+
+		<label for="type_of_meal_plan">Type of Meal Plan:</label>
+		<select id="type_of_meal_plan" name="type_of_meal_plan">
+			<option value="Meal Plan 1">Meal Plan 1</option>
+			<option value="Meal Plan 2">Meal Plan 2</option>
+		</select><br>
+
+		<label for="required_car_parking_space">Required Car Parking Space:</label>
+		<select id="required_car_parking_space" name="required_car_parking_space">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</select><br>
+
+		<label for="room_type_reserved">Room Type Reserved:</label>
+		<select id="room_type_reserved" name="room_type_reserved">
+			<option value="Room_Type 1">Room Type 1</option>
+			<option value="Room_Type 2">Room Type 2</option>
+			<option value="Room_Type 3">Room Type 3</option>
+			<option value="Room_Type 4">Room Type 4</option>
+		</select><br>
+
+		<label for="lead_time">Lead Time (in days):</label>
+		<input type="number" id="lead_time" name="lead_time" required><br>
+
+		<label for="arrival_month">Month of Arrival:</label>
+		<input type="number" id="arrival_month" name="arrival_month" min="1" max="12" required><br>
+
+		<label for="arrival_date">Date of Arrival:</label>
+		<input type="number" id="arrival_date" name="arrival_date" min="1" max="31" required><br>
+
+		<label for="market_segment_type">Market Segment Type:</label>
+		<select id="market_segment_type" name="market_segment_type">
+			<option value="Online">Online</option>
+			<option value="Offline">Offline</option>
+		</select><br>
+
+		<label for="repeated_guest">Repeated Guest:</label>
+		<select id="repeated_guest" name="repeated_guest">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</select><br>
+
+		<label for="no_of_previous_cancellations">Number of Previous Cancellations:</label>
+		<input type="number" id="no_of_previous_cancellations" name="no_of_previous_cancellations" required><br>
+
+		<label for="no_of_previous_bookings_not_canceled">Number of Previous Bookings Not Canceled:</label>
+		<input type="number" id="no_of_previous_bookings_not_canceled" name="no_of_previous_bookings_not_canceled" required><br>
+
+		<label for="avg_price_per_room">Average Price per Room:</label>
+		<input type="number" id="avg_price_per_room" name="avg_price_per_room" required><br>
+
+		<label for="no_of_special_requests">Number of Special Requests:</label>
+		<input type="number" id="no_of_special_requests" name="no_of_special_requests" required><br>
+
+		<button type="submit">Predict</button>
+</form>
+
+<script>
+		function performRequest() {
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", "https://your-api-gateway-endpoint.execute-api.us-east-1.amazonaws.com/prod/predict", true);
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState === 4 && xhr.status === 200) {
+					// Handle response from server here
+					var response = JSON.parse(xhr.responseText);
+					console.log(response);
+				}
+			};
+			xhr.send();
+		}
+</script>
+</body>
+</html>
